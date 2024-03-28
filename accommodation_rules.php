@@ -6,7 +6,20 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
 
-class accommodation_rules extends \Elementor\Widget_Base {
+class AccommodationRules extends \Elementor\Widget_Base {
+ 	const TIME_SELECTOR = '{{WRAPPER}} .ee_time';
+	const TIME_MARGIN_STYLE = 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};';
+  	const ICON_COLOR_LABEL = 'رنگ آیکن';
+	const ICON_STYLE = '{{WRAPPER}} .ee_time i';
+   	const ICON_COLOR_RULE = 'color: {{VALUE}}';
+	const TITLE_COLOR_LABEL = 'رنگ عنوان';
+	const PADDING_LABEL = 'فاصله خارجی';
+	const PADDING_TIME = '{{WRAPPER}} .ee_times',
+	const RLICO = '{{WRAPPER}} .rlico',
+	const RLITIT = '{{WRAPPER}} .rlitit',
+	const RLDESC = '{{WRAPPER}} .rldesc',
+	const MOHIYT ='{{WRAPPER}} .mohiyt',
+
 	public function get_name() {
 		return 'accommodation_rules';
 	}
@@ -33,7 +46,7 @@ class accommodation_rules extends \Elementor\Widget_Base {
 		$this->style_tab();
 	}
 
-	private function style_tab() {
+	private function styleTab() {
 		$this->start_controls_section(
 			'jt_role_time-style',
 			[
@@ -46,14 +59,14 @@ class accommodation_rules extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'jt_role_time_border',
-				'selector' => '{{WRAPPER}} .ee_time',
+				'selector' => TIME_SELECTOR,
 			]
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'jt_role_time_shadow',
-				'selector' => '{{WRAPPER}} .ee_time',
+				'selector' => TIME_SELECTOR,
 			]
 		);
 		$this->add_control(
@@ -63,7 +76,7 @@ class accommodation_rules extends \Elementor\Widget_Base {
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_time' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					TIME_SELECTOR => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -74,7 +87,7 @@ class accommodation_rules extends \Elementor\Widget_Base {
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_time' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					TIME_SELECTOR => TIME_MARGIN_STYLE,
 				],
 			]
 		);
@@ -95,10 +108,10 @@ class accommodation_rules extends \Elementor\Widget_Base {
 		$this->add_control(
 			'jt_role_timeicon_color',
 			[
-				'label' => esc_html__( 'رنگ آیکن', 'textdomain' ),
+				'label' => esc_html__( ICON_COLOR_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ee_time i' => 'color: {{VALUE}}',
+					ICON_STYLE => ICON_COLOR_RULE,
 				],
 			]
 		);
@@ -121,7 +134,7 @@ class accommodation_rules extends \Elementor\Widget_Base {
 					'size' => 25,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ee_time i' => 'font-size: {{SIZE}}{{UNIT}};',
+					ICON_STYLE => 'font-size: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -132,7 +145,7 @@ class accommodation_rules extends \Elementor\Widget_Base {
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_time i' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					ICON_STYLE => TIME_MARGIN_STYLE,
 				],
 			]
 		);
@@ -160,21 +173,21 @@ class accommodation_rules extends \Elementor\Widget_Base {
 		$this->add_control(
 			'jt_role_time_title_color',
 			[
-				'label' => esc_html__( 'رنگ عنوان', 'textdomain' ),
+				'label' => esc_html__( TITLE_COLOR_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ee_title' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .ee_title' => ICON_COLOR_RULE,
 				],
 			]
 		);
 		$this->add_control(
 			'jt_role_time_title_margin',
 			[
-				'label' => esc_html__( 'فاصله خارجی', 'textdomain' ),
+				'label' => esc_html__( PADDING_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ee_title' => TIME_MARGIN_STYLE,
 				],
 			]
 		);
@@ -196,27 +209,27 @@ class accommodation_rules extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'jt_role_time_clock_typography',
-				'selector' => '{{WRAPPER}} .ee_times',
+				'selector' => PADDING_TIME,
 			]
 		);
 		$this->add_control(
 			'jt_role_time_clock_color',
 			[
-				'label' => esc_html__( 'رنگ عنوان', 'textdomain' ),
+				'label' => esc_html__( TITLE_COLOR_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ee_times' => 'color: {{VALUE}}',
+					PADDING_TIME => ICON_COLOR_RULE,
 				],
 			]
 		);
 		$this->add_control(
 			'jt_role_time_clock_margin',
 			[
-				'label' => esc_html__( 'فاصله خارجی', 'textdomain' ),
+				'label' => esc_html__( PADDING_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_times' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					PADDING_TIME => TIME_MARGIN_STYLE,
 				],
 			]
 		);
@@ -247,10 +260,10 @@ class accommodation_rules extends \Elementor\Widget_Base {
 		$this->add_control(
 			'jt_role_returnLow_icon_color',
 			[
-				'label' => esc_html__( 'رنگ آیکن', 'textdomain' ),
+				'label' => esc_html__( ICON_COLOR_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .rlico' => 'color: {{VALUE}}',
+					RLICO => ICON_COLOR_RULE,
 				],
 			]
 		);
@@ -273,7 +286,7 @@ class accommodation_rules extends \Elementor\Widget_Base {
 					'size' => 29,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .rlico' => 'width: {{SIZE}}{{UNIT}};',
+					RLICO => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -284,7 +297,7 @@ class accommodation_rules extends \Elementor\Widget_Base {
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .rlico' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					RLICO => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -306,27 +319,27 @@ class accommodation_rules extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'jt_role_returnLows_title_typography',
-				'selector' => '{{WRAPPER}} .rlitit',
+				'selector' => RLITIT,
 			]
 		);
 		$this->add_control(
 			'jt_role_returnLows_title_color',
 			[
-				'label' => esc_html__( 'رنگ عنوان', 'textdomain' ),
+				'label' => esc_html__( TITLE_COLOR_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .rlitit' => 'color: {{VALUE}}',
+					RLITIT => ICON_COLOR_RULE,
 				],
 			]
 		);
 		$this->add_control(
 			'jt_role_returnLows_title_margin',
 			[
-				'label' => esc_html__( 'فاصله خارجی', 'textdomain' ),
+				'label' => esc_html__( PADDING_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .rlitit' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					RLITIT => TIME_MARGIN_STYLE,
 				],
 			]
 		);
@@ -348,27 +361,27 @@ class accommodation_rules extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'jt_role_returnLowsDesc_typography',
-				'selector' => '{{WRAPPER}} .rldesc',
+				'selector' => RLDESC,
 			]
 		);
 		$this->add_control(
 			'jt_role_returnLowsDesc_color',
 			[
-				'label' => esc_html__( 'رنگ عنوان', 'textdomain' ),
+				'label' => esc_html__( TITLE_COLOR_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .rldesc' => 'color: {{VALUE}}',
+					RLDESC => ICON_COLOR_RULE,
 				],
 			]
 		);
 		$this->add_control(
 			'jt_role_returnLowsDesc_margin',
 			[
-				'label' => esc_html__( 'فاصله خارجی', 'textdomain' ),
+				'label' => esc_html__( PADDING_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .rldesc' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					RLDESC => TIME_MARGIN_STYLE,
 				],
 			]
 		);
@@ -390,37 +403,37 @@ class accommodation_rules extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'jt_role_returnLowt_hr_typography',
-				'selector' => '{{WRAPPER}} .mohiyt',
+				'selector' =>MOHIYT,
 			]
 		);
 		$this->add_control(
 			'jt_role_returnLowt_hr_color',
 			[
-				'label' => esc_html__( 'رنگ عنوان', 'textdomain' ),
+				'label' => esc_html__( TITLE_COLOR_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .mohiyt' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .mohiyt' => ICON_COLOR_RULE,
 				],
 			]
 		);
 		$this->add_control(
 			'jt_role_returnLowt_hr_margin',
 			[
-				'label' => esc_html__( 'فاصله خارجی', 'textdomain' ),
+				'label' => esc_html__( PADDING_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'selectors' => [
-					'{{WRAPPER}} .mohiyt' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mohiyt' =>TIME_MARGIN_STYLE,
 				],
 			]
 		);
 		$this->add_control(
 			'jt_role_returnLowtIcon_color',
 			[
-				'label' => esc_html__( 'رنگ آیکن', 'textdomain' ),
+				'label' => esc_html__( ICON_COLOR_LABEL, 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .resli' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .resli' => ICON_COLOR_RULE,
 				],
 			]
 		);
